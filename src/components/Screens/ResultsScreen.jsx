@@ -6,8 +6,6 @@ import LiteratureSection from './../Sections/ResultsSections/LiteratureSection';
 import ExtrasSection from './../Sections/ResultsSections/ExtrasSection';
 import { downloadMbiPDF } from '../../utils/pdf/mbiPdfGenerator';
 import MbiInterpretationSection from './../Sections/ResultsSections/MbiInterpretationSection';
-// DEBUG-КОМПОНЕНТ (можно легко удалить / закомментировать)
-import ResultsAnswersDebugTable from '../Debug/ResultsAnswersDebugTable';
 import MbiRecommendationsSection from './../Sections/ResultsSections/MbiRecommendationsSection';
 
 // Один флаг — и вся отладка отключена.
@@ -44,31 +42,14 @@ const ResultsScreen = ({
         timeDisplay={timeDisplay}
         showSuccess={showSuccess}
         setShowSuccess={setShowSuccess}
+        onDownloadPDF={handleDownloadPDF}
       />
 
       <div className="result-main">
-        <h2 className="result-main__subtitle">Результаты вашего тестирования</h2>
         <MbiScalesSection mbiResults={mbiResults} />
         <MbiRecommendationsSection mbiResults={mbiResults} />
-
-        <div className="result-main__download">
-          <button className="result-main__download-btn patterns-button" onClick={handleDownloadPDF}>
-            ⬇ Скачать результаты PDF
-          </button>
-        </div> <MbiInterpretationSection />
+        <MbiInterpretationSection />
       </div>
-
-      {/* ОТЛАДКА — ОТДЕЛЬНО */}
-      {ENABLE_RESULTS_DEBUG && (
-        <ResultsAnswersDebugTable
-          enabled={true}
-          questions={questions}
-          answerIndices={answerIndices}
-          answerOptions={answerOptions}
-          mbiResults={mbiResults}
-        />
-      )}
-
       <ExtrasSection onRetakeTest={handleRetakeTest} />
       <LiteratureSection />
     </div>
