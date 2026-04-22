@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  //убрать для разработки, оставить для деплоя на GitHub Pages
-  //base: "/mbi-test-build/", //Строка для корректного отображения при деплое на GitHub Pages
+  base: "/mbi-test/",
+  //base: "/mbi-test-build/",
   server: {
     host: "127.0.0.1",
     port: 5173,
